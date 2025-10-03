@@ -1,0 +1,18 @@
+{
+  "name": "promail-ar",
+  "version": "1.0.0",
+  "description": "Email Corporativo de Nueva Generación - Sitio web oficial de Promail.ar",
+  "scripts": {
+    "dev": "php -S localhost:8000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "email",
+    "corporativo",
+    "promail",
+    "argentina"
+  ],
+  "author": "Promail.ar",
+  "license": "UNLICENSED",
+  "private": true
+}

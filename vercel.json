@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/**/*.php",
+      "use": "vercel-php@0.6.0"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "PGHOST": "@pghost",
+    "PGDATABASE": "@pgdatabase",
+    "PGUSER": "@pguser",
+    "PGPASSWORD": "@pgpassword",
+    "PGPORT": "@pgport"
+  }
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test APIs - Promail.ar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #82c0ab;
+            margin-top: 0;
+        }
+        button {
+            background: #82c0ab;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #6ba896;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Panel de Pruebas - APIs Promail.ar</h1>
+
+    <!-- Test Base de Datos -->
+    <div class="test-section">
+        <h2>1. Test Conexión Base de Datos</h2>
+        <button onclick="testDatabase()">Probar Conexión</button>
+        <pre id="dbResult">Haz clic en el botón para probar...</pre>
+    </div>
+
+    <!-- Test API Contactos GET -->
+    <div class="test-section">
+        <h2>2. Test API Contactos (GET)</h2>
+        <button onclick="testContactsGet()">Listar Contactos</button>
+        <pre id="contactsGetResult">Haz clic en el botón para probar...</pre>
+    </div>
+
+    <!-- Test API Contactos POST -->
+    <div class="test-section">
+        <h2>3. Test API Contactos (POST)</h2>
+        <button onclick="testContactsPost()">Crear Contacto de Prueba</button>
+        <pre id="contactsPostResult">Haz clic en el botón para probar...</pre>
+    </div>
+
+    <!-- Test API Chat -->
+    <div class="test-section">
+        <h2>4. Test API Chat</h2>
+        <button onclick="testChat()">Enviar Mensaje de Prueba</button>
+        <pre id="chatResult">Haz clic en el botón para probar...</pre>
+    </div>
+
+    <!-- Test API Amenazas -->
+    <div class="test-section">
+        <h2>5. Test API Amenazas</h2>
+        <button onclick="testThreats()">Obtener Datos de Amenazas</button>
+        <pre id="threatsResult">Haz clic en el botón para probar...</pre>
+    </div>
+
+    <script>
+        async function testDatabase() {
+            const result = document.getElementById('dbResult');
+            result.textContent = 'Probando conexión...';
+            
+            try {
+                const response = await fetch('api/test-db.php');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<span class="success">✓ Conexión exitosa</span>\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.innerHTML = `<span class="error">✗ Error</span>\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+
+        async function testContactsGet() {
+            const result = document.getElementById('contactsGetResult');
+            result.textContent = 'Obteniendo contactos...';
+            
+            try {
+                const response = await fetch('api/endpoints/contacts.php');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<span class="success">✓ ${data.records.length} contactos encontrados</span>\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.innerHTML = `<span class="error">✗ Error</span>\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+
+        async function testContactsPost() {
+            const result = document.getElementById('contactsPostResult');
+            result.textContent = 'Creando contacto...';
+            
+            const testData = {
+                nombre: 'Usuario de Prueba',
+                email: 'test@ejemplo.com',
+                empresa: 'Empresa Test SA',
+                plan: 'business',
+                mensaje: 'Este es un mensaje de prueba'
+            };
+            
+            try {
+                const response = await fetch('api/endpoints/contacts.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<span class="success">✓ Contacto creado exitosamente</span>\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.innerHTML = `<span class="error">✗ Error</span>\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+
+        async function testChat() {
+            const result = document.getElementById('chatResult');
+            result.textContent = 'Enviando mensaje...';
+            
+            try {
+                const response = await fetch('api/endpoints/chat.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: '¿Cuánto cuesta el plan Business?' })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<span class="success">✓ Respuesta recibida</span>\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.innerHTML = `<span class="error">✗ Error</span>\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+
+        async function testThreats() {
+            const result = document.getElementById('threatsResult');
+            result.textContent = 'Obteniendo datos de amenazas...';
+            
+            try {
+                const response = await fetch('api/endpoints/threats.php');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    result.innerHTML = `<span class="success">✓ Datos obtenidos</span>\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    result.innerHTML = `<span class="error">✗ Error</span>\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
