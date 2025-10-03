@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Panel Admin Promail.ar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <!-- Columna Izquierda: Info y Logo -->
+            <div>
+                <div class="login-header">
+                    <img src="assets/images/logo_pm.jpg" alt="Promail.ar" class="login-logo">
+                    <h1>Panel de Administración</h1>
+                    <p>Gestiona tu dominio y monitorea el sentimiento organizacional</p>
+                </div>
+
+                <div class="login-info">
+                    <p><strong>Credenciales de prueba:</strong></p>
+                    <p>Usuario: <code>admin</code></p>
+                    <p>Contraseña: <code>admin123</code></p>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario -->
+            <div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuario o Email</label>
+                        <input type="text" id="username" name="username" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Recordarme</span>
+                        </label>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span id="btnText">Ingresar</span>
+                        <span id="btnLoading" style="display: none;">Ingresando...</span>
+                    </button>
+
+                    <div class="login-footer">
+                        <a href="index.html">← Volver al sitio</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Limpiar error previo
+            errorMessage.style.display = 'none';
+            
+            // Mostrar loading
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch('api/endpoints/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    // Guardar token en localStorage
+                    localStorage.setItem('admin_token', result.token);
+                    localStorage.setItem('admin_name', result.admin.nombre);
+                    localStorage.setItem('admin_email', result.admin.email);
+                    
+                    // Redirigir al dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Mostrar error con debug
+                    let errorText = result.message || 'Error al iniciar sesión';
+                    if (result.debug) {
+                        errorText += ' (Debug: ' + result.debug + ')';
+                        console.log('Login debug:', result);
+                    }
+                    errorMessage.textContent = errorText;
+                    errorMessage.style.display = 'block';
+                    
+                    // Restaurar botón
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Error de conexión. Por favor, intenta nuevamente.';
+                errorMessage.style.display = 'block';
+                
+                // Restaurar botón
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+

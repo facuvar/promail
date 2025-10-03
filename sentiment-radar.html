@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Radar - Promail.ar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/images/logo_pm.jpg" alt="Promail.ar Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#ventajas">Ventajas</a></li>
+                <li><a href="index.html#seguridad">Seguridad</a></li>
+                <li><a href="index.html#precios">Precios</a></li>
+                <li><a href="index.html#comparativa">Comparativa</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Sentiment Radar -->
+    <section class="hero" style="margin-top: 80px;">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div class="hero-content">
+                <h1 class="hero-title">Sentiment <span class="highlight">Radar</span></h1>
+                <p class="hero-subtitle" style="font-size: 1.5rem; margin-bottom: 1rem;">Radar de Sentimiento Organizacional</p>
+                <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">
+                    Una herramienta única que ni Google ni Microsoft ofrecen. Analiza el tono emocional de tu organización sin comprometer la privacidad.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#funcionalidades" class="btn btn-primary">Ver Funcionalidades</a>
+                    <a href="index.html#contacto" class="btn btn-secondary">Solicitar Demo</a>
+                </div>
+            </div>
+            <div>
+                <div class="sentiment-dashboard-preview" style="max-width: 500px; margin: 0 auto;">
+                    <div class="preview-header">
+                        <h4>Dashboard en Vivo</h4>
+                        <span class="preview-badge">Análisis en Tiempo Real</span>
+                    </div>
+                    
+                    <!-- Métricas Generales -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
+                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">65%</div>
+                            <div style="font-size: 0.75rem; color: var(--text-light);">Positivo</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">25%</div>
+                            <div style="font-size: 0.75rem; color: var(--text-light);">Neutral</div>
+                        </div>
+                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">10%</div>
+                            <div style="font-size: 0.75rem; color: var(--text-light);">Negativo</div>
+                        </div>
+                    </div>
+
+                    <div class="sentiment-meters">
+                        <div class="sentiment-meter">
+                            <div class="meter-label">Marketing</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill positive" style="width: 75%"></div>
+                            </div>
+                            <div class="meter-value">75%</div>
+                        </div>
+                        <div class="sentiment-meter">
+                            <div class="meter-label">Ventas</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill positive" style="width: 68%"></div>
+                            </div>
+                            <div class="meter-value">68%</div>
+                        </div>
+                        <div class="sentiment-meter">
+                            <div class="meter-label">Soporte</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill neutral" style="width: 55%"></div>
+                            </div>
+                            <div class="meter-value">55%</div>
+                        </div>
+                        <div class="sentiment-meter">
+                            <div class="meter-label">RRHH</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill positive" style="width: 82%"></div>
+                            </div>
+                            <div class="meter-value">82%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-note" style="margin-top: 1rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none">
+                            <path d="M12 16.5V14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97627 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.879 17.7547 20 16.6376 20 15.5C20 14.3624 19.879 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97627 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12104 13.2453 4 14.3624 4 15.5C4 16.6376 4.12104 17.7547 4.26781 18.8447Z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span>Sin leer correos. Solo análisis de tono.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ¿Qué es Sentiment Radar? -->
+    <section style="padding: 4rem 0; background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">¿Qué es Sentiment Radar?</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">
+                    Sentiment Radar es un panel de análisis de IA que monitorea el <strong>tono emocional</strong> de la comunicación 
+                    en tu organización. El administrador puede ver el sentimiento general y por casilla en correos 
+                    <strong>enviados y recibidos</strong>, sin nunca leer el contenido de los mensajes.
+                </p>
+                
+                <div class="preview-note" style="margin: 2rem 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                        <path d="M12 16.5V14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97627 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.879 17.7547 20 16.6376 20 15.5C20 14.3624 19.879 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97627 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12104 13.2453 4 14.3624 4 15.5C4 16.6376 4.12104 17.7547 4.26781 18.8447Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span><strong>Privacidad Total:</strong> Los correos NUNCA son leídos por nadie, ni siquiera por los administradores. Solo se analiza metadata (asunto, longitud, hora) y patrones de tono usando IA.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Principales -->
+    <section id="funcionalidades" style="padding: 4rem 0; background: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Funcionalidades Principales</h2>
+            
+            <div class="ventajas-grid">
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="#5a6673" stroke-width="1.5"/>
+                            <path d="M7 17L7 13" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M12 17L12 7" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M17 17L17 11" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Panel por Casilla y Global</h3>
+                    <p>Visualiza el sentimiento de cada casilla individual o el resumen organizacional completo. Identifica rápidamente equipos o personas que puedan necesitar atención.</p>
+                </div>
+
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M21 21H10C6.70017 21 5.05025 21 4.02513 19.9749C3 18.9497 3 17.2998 3 14V3" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M7 14.5C7.96367 13.3333 9 11.9278 9 10.6102C9 9.76925 8.55228 9 8 9C7.44772 9 7 9.76925 7 10.6102C7 11.9278 8.03633 13.3333 9 14.5C9.96367 15.6667 11 17.0722 11 18.3898C11 19.2307 11.4477 20 12 20C12.5523 20 13 19.2307 13 18.3898C13 17.0722 11.9637 15.6667 11 14.5C10.0363 13.3333 9 11.9278 9 10.6102M14.5 11C15.4637 9.83333 16.5 8.42778 16.5 7.11017C16.5 6.26925 16.0523 5.5 15.5 5.5C14.9477 5.5 14.5 6.26925 14.5 7.11017C14.5 8.42778 15.5363 9.83333 16.5 11C17.4637 12.1667 18.5 13.5722 18.5 14.8898C18.5 15.7307 18.0523 16.5 17.5 16.5C16.9477 16.5 16.5 15.7307 16.5 14.8898C16.5 13.5722 15.4637 12.1667 14.5 11Z" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Evolución Temporal</h3>
+                    <p>Gráficos de evolución semanal y mensual del tono en correos enviados y recibidos. Detecta tendencias, picos de estrés o mejoras en el clima laboral.</p>
+                </div>
+
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M18.6161 20H19.1063C20.2561 20 21.1707 19.4761 21.9919 18.7436C24.078 16.8826 19.1741 15 17.5 15M15.5 5.06877C15.7271 5.02373 15.9629 5 16.2048 5C18.0247 5 19.5 6.34315 19.5 8C19.5 9.65685 18.0247 11 16.2048 11C15.9629 11 15.7271 10.9763 15.5 10.9312" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M4.48131 16.1112C3.30234 16.743 0.211137 18.0331 2.09388 19.6474C3.01359 20.436 4.03791 21 5.32572 21H12.6743C13.9621 21 14.9864 20.436 15.9061 19.6474C17.7889 18.0331 14.6977 16.743 13.5187 16.1112C10.754 14.6296 7.24599 14.6296 4.48131 16.1112Z" stroke="#5a6673" stroke-width="1.5"/>
+                            <path d="M13 7.5C13 9.70914 11.2091 11.5 9 11.5C6.79086 11.5 5 9.70914 5 7.5C5 5.29086 6.79086 3.5 9 3.5C11.2091 3.5 13 5.29086 13 7.5Z" stroke="#5a6673" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Filtros por Área/Departamento</h3>
+                    <p>Segmenta el análisis por equipos, departamentos o proyectos. Compara el sentimiento entre áreas y toma decisiones informadas.</p>
+                </div>
+
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M5.07579 17C4.08939 4.54502 12.9123 1.0121 19.9734 2.22417C20.2585 6.35185 18.2389 7.89748 14.3926 8.61125C15.1353 9.38731 16.4477 10.3639 16.3061 11.5847C16.2054 12.4534 15.6154 12.8797 14.4355 13.7322C13.7062 14.2819 12.8616 14.8819 12.4626 15.6467C11.5954 17.2916 11.7525 19.2901 12.4626 20.5" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.4626 20.5C12.4626 20.5 15.2954 21.7943 18.8704 18.6345" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Sistema de Alertas</h3>
+                    <p>Recibe notificaciones automáticas cuando el porcentaje de sentimiento negativo supera un umbral configurable (ej. 30%). Actúa antes de que sea tarde.</p>
+                </div>
+
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="#5a6673" stroke-width="1.5"/>
+                            <path d="M8 12.5L10.5 15L16 9" stroke="#5a6673" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Análisis de IA</h3>
+                    <p>Modelos de IA entrenados en análisis de sentimiento procesan patrones de comunicación sin acceder al contenido. 100% ético y privado.</p>
+                </div>
+
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <path d="M2 6L8.91302 9.91697C11.4616 11.361 12.5384 11.361 15.087 9.91697L22 6" stroke="#5a6673" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z" stroke="#5a6673" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Enviados y Recibidos</h3>
+                    <p>Analiza tanto los correos que tu equipo envía como los que recibe. Entiende la dinámica completa de la comunicación interna y externa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Uso -->
+    <section style="padding: 4rem 0; background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">¿Para qué sirve?</h2>
+            <div class="comparativa-bullets">
+                <div class="bullet-card">
+                    <h3>Recursos Humanos</h3>
+                    <p>Detecta burnout, estrés laboral o conflictos entre equipos antes de que escalen. Mide el impacto de cambios organizacionales en el clima laboral.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>Gerencia</h3>
+                    <p>Toma decisiones basadas en datos sobre el estado emocional de la organización. Identifica departamentos que necesitan soporte o reconocimiento.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>Atención al Cliente</h3>
+                    <p>Monitorea el tono de las interacciones con clientes. Detecta patrones de insatisfacción y actúa proactivamente.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>Proyectos</h3>
+                    <p>Evalúa el sentimiento del equipo durante proyectos críticos. Detecta señales de alarma en la comunicación del equipo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section style="padding: 4rem 0; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: var(--white); text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--white); margin-bottom: 1rem;">¿Listo para entender mejor tu organización?</h2>
+            <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9;">
+                Sentiment Radar está incluido en nuestros planes Business y Enterprise
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html#precios" class="btn" style="background: var(--white); color: var(--primary-color);">Ver Planes</a>
+                <a href="index.html#contacto" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Solicitar Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="assets/images/logo_pm.jpg" alt="Promail.ar" class="footer-logo">
+                    <p>Email corporativo profesional para empresas argentinas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Producto</h4>
+                    <ul>
+                        <li><a href="index.html#ventajas">Ventajas</a></li>
+                        <li><a href="index.html#seguridad">Seguridad</a></li>
+                        <li><a href="index.html#precios">Precios</a></li>
+                        <li><a href="sentiment-radar.html">Sentiment Radar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos de Servicio</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">SLA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Promail.ar - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

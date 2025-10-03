@@ -28,6 +28,25 @@ CREATE TABLE users (
     last_login TIMESTAMP
 );
 
+-- Tabla de administradores (panel de administración)
+CREATE TABLE admins (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    role VARCHAR(20) DEFAULT 'admin',
+    domain VARCHAR(100),
+    active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP
+);
+
+-- Insertar un admin de prueba (user: admin@promail.ar, pass: admin123)
+-- Password hash para 'admin123' usando password_hash() de PHP
+INSERT INTO admins (username, email, password_hash, nombre, domain) VALUES
+('admin', 'admin@promail.ar', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrador Principal', 'promail.ar');
+
 -- Tabla de planes
 CREATE TABLE plans (
     id BIGSERIAL PRIMARY KEY,

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Promail.ar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo_pm.jpg" alt="Promail.ar" class="sidebar-logo">
+            <h3>ProMail Admin</h3>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active" data-view="overview">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M7 17L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M12 17L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M17 17L17 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Resumen</span>
+            </a>
+
+            <a href="#sentiment" class="nav-item" data-view="sentiment">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M21 21H10C6.70017 21 5.05025 21 4.02513 19.9749C3 18.9497 3 17.2998 3 14V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7 14.5C7.96367 13.3333 9 11.9278 9 10.6102C9 9.76925 8.55228 9 8 9C7.44772 9 7 9.76925 7 10.6102C7 11.9278 8.03633 13.3333 9 14.5C9.96367 15.6667 11 17.0722 11 18.3898C11 19.2307 11.4477 20 12 20C12.5523 20 13 19.2307 13 18.3898C13 17.0722 11.9637 15.6667 11 14.5C10.0363 13.3333 9 11.9278 9 10.6102M14.5 11C15.4637 9.83333 16.5 8.42778 16.5 7.11017C16.5 6.26925 16.0523 5.5 15.5 5.5C14.9477 5.5 14.5 6.26925 14.5 7.11017C14.5 8.42778 15.5363 9.83333 16.5 11C17.4637 12.1667 18.5 13.5722 18.5 14.8898C18.5 15.7307 18.0523 16.5 17.5 16.5C16.9477 16.5 16.5 15.7307 16.5 14.8898C16.5 13.5722 15.4637 12.1667 14.5 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Sentiment Radar</span>
+            </a>
+
+            <a href="#emails" class="nav-item" data-view="emails">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M2 6L8.91302 9.91697C11.4616 11.361 12.5384 11.361 15.087 9.91697L22 6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                <span>Correos</span>
+            </a>
+
+            <a href="#users" class="nav-item" data-view="users">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M20.7739 18C21.5232 18 22.1192 17.5285 22.6543 16.8691C23.7498 15.5194 21.9512 14.4408 21.2652 13.9126C20.5679 13.3756 19.7893 13.0714 18.9999 13M17.9999 11C19.3806 11 20.4999 9.88071 20.4999 8.5C20.4999 7.11929 19.3806 6 17.9999 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M3.2259 18C2.47659 18 1.88061 17.5285 1.34548 16.8691C0.250028 15.5194 2.04861 14.4408 2.73458 13.9126C3.43191 13.3756 4.21052 13.0714 4.99994 13M5.49994 11C4.11923 11 2.99994 9.88071 2.99994 8.5C2.99994 7.11929 4.11923 6 5.49994 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M8.08368 15.1112C7.0619 15.743 4.38286 17.0331 6.01458 18.6474C6.81166 19.436 7.6994 20 8.8155 20H15.1843C16.3004 20 17.1881 19.436 17.9852 18.6474C19.6169 17.0331 16.9379 15.743 15.9161 15.1112C13.52 13.6296 10.4797 13.6296 8.08368 15.1112Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.4999 7.5C15.4999 9.433 13.9329 11 11.9999 11C10.0669 11 8.49988 9.433 8.49988 7.5C8.49988 5.567 10.0669 4 11.9999 4C13.9329 4 15.4999 5.567 15.4999 7.5Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span>Usuarios</span>
+            </a>
+
+            <a href="#settings" class="nav-item" data-view="settings">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M13.7654 2.15224C13.3978 2 12.9319 2 12 2C11.0681 2 10.6022 2 10.2346 2.15224C9.74458 2.35523 9.35523 2.74458 9.15224 3.23463C9.06611 3.43821 9.0284 3.66973 9.00911 4.00003M13.7654 21.8478C13.3978 22 12.9319 22 12 22C11.0681 22 10.6022 22 10.2346 21.8478C9.74458 21.6448 9.35523 21.2554 9.15224 20.7654C9.06611 20.5618 9.0284 20.3303 9.00911 20M20.7654 10.2346C20.6122 9.86782 20.3113 9.54598 19.9176 9.37155C19.5871 9.22159 19.2267 9.17622 18.7654 9.13421M3.23463 13.7654C3.38786 14.1322 3.68868 14.454 4.08244 14.6285C4.41288 14.7784 4.77333 14.8238 5.23464 14.8658M9 4.00003C8.87204 4.98714 8.5 6 7.37602 6.88993C6.09023 7.90883 4.5 8.33749 3.23463 9.23463C2.74458 9.43762 2.35523 9.82697 2.15224 10.317C2 10.6846 2 11.1505 2 12.0824C2 13.0143 2 13.4802 2.15224 13.8478C2.35523 14.3378 2.74458 14.7272 3.23463 14.9302C4.5 15.8273 6.09023 16.256 7.37602 17.2749C8.5 18.1648 8.87204 19.1777 9 20.165M15 20.165C15.128 19.1777 15.5 18.1648 16.624 17.2749C17.9098 16.256 19.5 15.8273 20.7654 14.9302C21.2554 14.7272 21.6448 14.3378 21.8478 13.8478C22 13.4802 22 13.0143 22 12.0824C22 11.1505 22 10.6846 21.8478 10.317C21.6448 9.82697 21.2554 9.43762 20.7654 9.23463C19.5 8.33749 17.9098 7.90883 16.624 6.88993C15.5 6 15.128 4.98714 15 4.00003" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>Configuración</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="btn-logout">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                    <path d="M15 17.625C14.9264 19.4769 13.3831 21.0494 11.3156 20.9988C10.8346 20.987 10.2401 20.8194 9.05112 20.484C6.18961 19.6768 3.70555 18.3203 3.10956 15.2815C3 14.723 3 14.0944 3 12.8373L3 11.1627C3 9.90561 3 9.27705 3.10956 8.71846C3.70555 5.67965 6.18961 4.32316 9.05112 3.51603C10.2401 3.18064 10.8346 3.01295 11.3156 3.00119C13.3831 2.95061 14.9264 4.52307 15 6.37501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M21 12H10M21 12C21 11.2998 19.0057 9.99153 18.5 9.5M21 12C21 12.7002 19.0057 14.0085 18.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div>
+                <h1 id="pageTitle">Resumen</h1>
+                <p id="pageSubtitle">Bienvenido a tu panel de administración</p>
+            </div>
+            <div class="header-user">
+                <div class="user-info">
+                    <span class="user-name" id="userName">Admin</span>
+                    <span class="user-email" id="userEmail">admin@promail.ar</span>
+                </div>
+                <div class="user-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                        <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="dashboard-content" id="dashboardContent">
+            <!-- El contenido se cargará dinámicamente -->
+        </div>
+    </main>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+
