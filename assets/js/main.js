@@ -321,6 +321,39 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Conversor ARS
+(function(){
+    const input = document.getElementById('usdOficial');
+    const arsSpans = document.querySelectorAll('.ars');
+
+    function formatARS(v){
+        try {
+            return new Intl.NumberFormat('es-AR', { style:'currency', currency:'ARS', maximumFractionDigits:0 }).format(v);
+        } catch(e){
+            return 'ARS ' + Math.round(v).toLocaleString('es-AR');
+        }
+    }
+
+    function recalc(){
+        const rate = parseFloat(input.value || '0');
+        arsSpans.forEach(el => {
+            const usd = parseFloat(el.getAttribute('data-usd'));
+            if (!rate || rate <= 0) {
+                el.textContent = '';
+            } else {
+                const ars = usd * rate;
+                el.textContent = ' · ' + formatARS(ars);
+                el.title = `USD ${usd} × ${rate} ARS`;
+            }
+        });
+    }
+
+    if (input) {
+        input.addEventListener('input', recalc);
+        recalc();
+    }
+})();
+
 // Inicializar componentes
 document.addEventListener('DOMContentLoaded', () => {
     new ThreatMonitor();

@@ -20,6 +20,7 @@
                 <li><a href="#ventajas">Ventajas</a></li>
                 <li><a href="#seguridad">Seguridad</a></li>
                 <li><a href="#precios">Precios</a></li>
+                <li><a href="#comparativa">Comparativa</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
@@ -277,6 +278,116 @@
                     <a href="#contacto" class="btn btn-outline">Contactar</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Comparativa ProMail -->
+    <section class="comparativa" id="comparativa">
+        <div class="container">
+            <div class="comparativa-header">
+                <h2 class="section-title">¿Por qué <span class="highlight">ProMail</span> frente a Google/Microsoft?</h2>
+                <p class="section-subtitle">Correo profesional en ARS, sin contratos anuales y con casillas a la medida.</p>
+            </div>
+
+            <!-- Conversor a ARS -->
+            <div class="conversor-ars">
+                <label for="usdOficial">Dólar oficial (ARS):</label>
+                <input id="usdOficial" type="number" min="0" step="0.01" value="0" placeholder="p.ej. 980">
+                <span class="conversor-hint">Tus precios se muestran siempre en USD y, opcionalmente, convertidos a ARS al facturar.</span>
+            </div>
+
+            <!-- Tabla comparativa -->
+            <div class="tabla-comparativa-wrapper">
+                <table class="tabla-comparativa">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>ProMail</th>
+                            <th>Google Workspace*</th>
+                            <th>Microsoft 365 / Exchange*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Modelo de precio</strong></td>
+                            <td>Por casilla, <strong>sin contrato anual</strong>. Facturación en <strong>ARS</strong> al dólar oficial del día.</td>
+                            <td>Por usuario/mes, usualmente en USD. Planes con/ sin compromiso.</td>
+                            <td>Por usuario/mes en USD. Foco en bundles (Teams/Office).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tamaños de casilla</strong></td>
+                            <td>
+                                1&nbsp;GB, 5&nbsp;GB, 10&nbsp;GB, 50&nbsp;GB<br>
+                                <small>Escalás sin migraciones complejas</small>
+                            </td>
+                            <td>Capacidades predefinidas por plan (no granular por casilla)</td>
+                            <td>Capacidades predefinidas por plan (p.ej. 50&nbsp;GB)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Precios ProMail</strong></td>
+                            <td>
+                                <ul class="precios-lista">
+                                    <li>1&nbsp;GB: <strong>USD 2</strong> <span class="ars" data-usd="2"></span></li>
+                                    <li>5&nbsp;GB: <strong>USD 3.5</strong> <span class="ars" data-usd="3.5"></span></li>
+                                    <li>10&nbsp;GB: <strong>USD 5.5</strong> <span class="ars" data-usd="5.5"></span></li>
+                                    <li>50&nbsp;GB: <strong>USD 8.5</strong> <span class="ars" data-usd="8.5"></span></li>
+                                </ul>
+                                <small>Se factura en ARS al oficial</small>
+                            </td>
+                            <td>Desde ~USD (según plan).<br><small>Ver precios vigentes</small></td>
+                            <td>Desde ~USD (según plan).<br><small>Ver precios vigentes</small></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Soporte</strong></td>
+                            <td><strong>Local y en español</strong>. Onboarding y migración guiada.</td>
+                            <td>Global, enrutado por prioridad/plan.</td>
+                            <td>Global, enrutado por prioridad/plan.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad y entregabilidad</strong></td>
+                            <td>SPF, DKIM, DMARC, antispam/antiphishing, backups.<br><small>Políticas ajustables por dominio</small></td>
+                            <td>Controles avanzados, reputación global.</td>
+                            <td>Controles avanzados, reputación global.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integraciones</strong></td>
+                            <td>IMAP/SMTP/POP3, Webmail, APIs/compatibilidad con clientes.</td>
+                            <td>Fuerte ecosistema propio (Drive, Meet, etc.).</td>
+                            <td>Fuerte ecosistema propio (Teams, OneDrive, etc.).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facturación</strong></td>
+                            <td><strong>En ARS</strong>, sin impuestos de tarjeta internacional.</td>
+                            <td>USD, impuestos y tipo de cambio tarjeta.</td>
+                            <td>USD, impuestos y tipo de cambio tarjeta.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bloque de bullets comerciales -->
+            <div class="comparativa-bullets">
+                <div class="bullet-card">
+                    <h3>Sin ataduras</h3>
+                    <p>Mes a mes, sin contrato anual. Probás, te quedás si te sirve.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>A la medida</h3>
+                    <p>Elegí 1/5/10/50&nbsp;GB por casilla y ajustalo cuando quieras.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>Local y claro</h3>
+                    <p>Precios en ARS y soporte en español, sin sorpresas de dólar tarjeta.</p>
+                </div>
+                <div class="bullet-card">
+                    <h3>Migración guiada</h3>
+                    <p>Te ayudamos a traer tus correos, listas y alias sin fricción.</p>
+                </div>
+            </div>
+
+            <p class="comparativa-disclaimer">
+                * Referencias genéricas: las suites de Google/Microsoft se comercializan en USD con planes por usuario/mes y distintas capacidades. Consultar precios vigentes en sus sitios oficiales.
+            </p>
         </div>
     </section>
 

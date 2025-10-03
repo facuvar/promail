@@ -762,6 +762,160 @@ section {
     transform: scale(1.1);
 }
 
+/* Comparativa Section */
+.comparativa {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.comparativa-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.conversor-ars {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: var(--light-color);
+    border: 1px solid #e2e8f0;
+    padding: 12px 14px;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.conversor-ars label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.conversor-ars input {
+    width: 130px;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 1rem;
+}
+
+.conversor-ars input:focus {
+    border-color: var(--primary-color);
+}
+
+.conversor-hint {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.tabla-comparativa-wrapper {
+    overflow: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.tabla-comparativa {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 780px;
+}
+
+.tabla-comparativa thead {
+    background: var(--dark-color);
+    color: var(--white);
+}
+
+.tabla-comparativa th {
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 700;
+}
+
+.tabla-comparativa tbody tr:nth-child(odd) {
+    background: var(--white);
+}
+
+.tabla-comparativa tbody tr:nth-child(even) {
+    background: var(--light-color);
+}
+
+.tabla-comparativa td {
+    padding: 14px 16px;
+    vertical-align: top;
+}
+
+.tabla-comparativa td strong {
+    color: var(--dark-color);
+}
+
+.tabla-comparativa small {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.precios-lista {
+    margin: 0;
+    padding-left: 18px;
+    list-style: none;
+}
+
+.precios-lista li {
+    margin-bottom: 0.5rem;
+}
+
+.precios-lista li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.ars {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.comparativa-bullets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-bottom: 1rem;
+}
+
+.bullet-card {
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 16px;
+    transition: all 0.3s;
+}
+
+.bullet-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+}
+
+.bullet-card h3 {
+    margin: 0 0 6px;
+    font-size: 1.125rem;
+    color: var(--dark-color);
+}
+
+.bullet-card p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.comparativa-disclaimer {
+    color: var(--text-light);
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
 /* Footer */
 .footer {
     background: var(--dark-color);
