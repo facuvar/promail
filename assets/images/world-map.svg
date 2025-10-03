@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" fill="none">
+  <!-- Grid Lines -->
+  <line x1="0" y1="125" x2="1200" y2="125" stroke="rgba(130,192,171,0.08)" stroke-width="1"/>
+  <line x1="0" y1="250" x2="1200" y2="250" stroke="rgba(130,192,171,0.12)" stroke-width="1.5"/>
+  <line x1="0" y1="375" x2="1200" y2="375" stroke="rgba(130,192,171,0.08)" stroke-width="1"/>
+  
+  <line x1="200" y1="0" x2="200" y2="500" stroke="rgba(130,192,171,0.06)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="500" stroke="rgba(130,192,171,0.06)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="500" stroke="rgba(130,192,171,0.08)" stroke-width="1"/>
+  <line x1="800" y1="0" x2="800" y2="500" stroke="rgba(130,192,171,0.06)" stroke-width="1"/>
+  <line x1="1000" y1="0" x2="1000" y2="500" stroke="rgba(130,192,171,0.06)" stroke-width="1"/>
+  
+  <!-- Continentes Simplificados -->
+  
+  <!-- América del Norte -->
+  <path d="M 150,150 L 200,120 L 250,110 L 280,130 L 260,180 L 220,200 L 180,190 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- América del Sur -->
+  <path d="M 220,220 L 250,240 L 260,280 L 250,320 L 230,330 L 210,310 L 205,260 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- Europa -->
+  <path d="M 520,140 L 560,130 L 590,140 L 600,170 L 580,190 L 540,185 L 510,165 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- África -->
+  <path d="M 540,210 L 580,200 L 610,220 L 620,270 L 600,310 L 570,320 L 540,300 L 530,250 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- Asia -->
+  <path d="M 650,120 L 750,100 L 850,110 L 900,140 L 920,180 L 890,220 L 840,230 L 780,220 L 720,200 L 680,170 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- Oceanía -->
+  <path d="M 900,280 L 950,270 L 980,290 L 970,320 L 940,330 L 910,310 Z" 
+        fill="rgba(130,192,171,0.15)" stroke="rgba(130,192,171,0.3)" stroke-width="1.5"/>
+  
+  <!-- Conexiones entre continentes (rutas de datos) -->
+  <path d="M 250,150 Q 400,130 550,150" stroke="rgba(130,192,171,0.2)" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M 580,160 Q 700,140 850,160" stroke="rgba(130,192,171,0.2)" stroke-width="2" stroke-dasharray="5,5"/>
+  <path d="M 250,260 Q 400,240 550,250" stroke="rgba(130,192,171,0.2)" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Puntos de conexión importantes -->
+  <circle cx="230" cy="180" r="4" fill="rgba(130,192,171,0.5)"/>
+  <circle cx="570" cy="160" r="4" fill="rgba(130,192,171,0.5)"/>
+  <circle cx="850" cy="180" r="4" fill="rgba(130,192,171,0.5)"/>
+  <circle cx="240" cy="270" r="4" fill="rgba(130,192,171,0.5)"/>
+  <circle cx="580" cy="260" r="4" fill="rgba(130,192,171,0.5)"/>
+  <circle cx="930" cy="290" r="4" fill="rgba(130,192,171,0.5)"/>
+</svg>
+

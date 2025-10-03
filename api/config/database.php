@@ -1,9 +1,13 @@
 <?php
 /**
  * Configuración de Base de Datos
- * Para desarrollo local con PostgreSQL
- * Para producción con Neon
+ * Usa Neon tanto en local como en producción
  */
+
+// Cargar variables de entorno en local si no están cargadas
+if (!getenv('PGHOST')) {
+    require_once __DIR__ . '/env.php';
+}
 
 class Database {
     private $host;
@@ -14,38 +18,44 @@ class Database {
     public $conn;
 
     public function __construct() {
-        // Detectar si estamos en producción (Vercel) o desarrollo local
-        if (getenv('VERCEL_ENV')) {
-            // Configuración para Neon (Producción)
-            $this->host = getenv('PGHOST');
-            $this->db_name = getenv('PGDATABASE');
-            $this->username = getenv('PGUSER');
-            $this->password = getenv('PGPASSWORD');
-            $this->port = getenv('PGPORT') ?: '5432';
-        } else {
-            // Configuración local
-            $this->host = 'localhost';
-            $this->db_name = 'promail_db';
-            $this->username = 'postgres';
-            $this->password = 'postgres';
-            $this->port = '5432';
-        }
+        // Usar Neon en todos los ambientes (local y producción)
+        // Las variables se cargan desde .env en local o desde Vercel en producción
+        
+        $this->host = getenv('PGHOST') ?: 'ep-cool-rain-ad0kocck-pooler.c-2.us-east-1.aws.neon.tech';
+        $this->db_name = getenv('PGDATABASE') ?: 'neondb';
+        $this->username = getenv('PGUSER') ?: 'neondb_owner';
+        $this->password = getenv('PGPASSWORD') ?: 'npg_AkRIVhH48jbT';
+        $this->port = getenv('PGPORT') ?: '5432';
     }
 
+    public $lastError = null;
+    
     public function getConnection() {
         $this->conn = null;
 
         try {
-            $dsn = "pgsql:host=" . $this->host . 
-                   ";port=" . $this->port . 
-                   ";dbname=" . $this->db_name;
+            // Extraer endpoint ID del host (primera parte antes del primer punto)
+            $endpointId = explode('.', $this->host)[0];
             
-            $this->conn = new PDO($dsn, $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            // Incluir endpoint como parámetro en el DSN (formato que sugiere Neon)
+            $dsn = sprintf(
+                "pgsql:host=%s;port=%s;dbname=%s;sslmode=require;options=endpoint=%s",
+                $this->host,
+                $this->port,
+                $this->db_name,
+                $endpointId
+            );
+            
+            // Intentar conexión pasando user/password como parámetros de PDO
+            $this->conn = new PDO($dsn, $this->username, $this->password, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
             
         } catch(PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            $this->lastError = $e->getMessage();
+            error_log("Error de conexión a base de datos: " . $e->getMessage());
+            return null;
         }
 
         return $this->conn;

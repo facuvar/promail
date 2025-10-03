@@ -1,7 +1,8 @@
-# Environment variables
+# Environment variables (IMPORTANTE: no hacer commit de .env)
 .env
 .env.local
 .env.production
+.env.backup
 
 # Vercel
 .vercel
