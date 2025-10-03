@@ -56,15 +56,36 @@ Sitio web corporativo para Promail.ar, la alternativa profesional argentina a Go
    - Iniciar Apache desde el panel de XAMPP
    - Acceder a `http://localhost/promail`
 
-## 🔒 Integración con Cloudflare
+## 🔒 Integración con Cloudflare Radar API
 
-El monitor de amenazas utiliza datos reales de **Cloudflare Radar API**:
+El monitor de amenazas se conecta a la **Cloudflare Radar API** para mostrar datos reales:
+
+### 📊 Funcionamiento Actual
+
+- ✅ **Conexión automática** a Cloudflare Radar API
+- ✅ **Fallback inteligente**: Si la API no responde, usa datos estimados
+- ✅ **Sin configuración requerida**: Funciona out-of-the-box
+- ✅ **Mejorable**: Agrega tu API Key para datos 100% reales
+
+### 🔑 Modo Mejorado (Opcional - Recomendado)
+
+Para obtener **datos 100% en tiempo real**:
+
+1. **Obtén tu API Key** de Cloudflare (gratis): [Guía completa →](CLOUDFLARE_API_SETUP.md)
+2. **Agrégala a Vercel**:
+   ```bash
+   CLOUDFLARE_API_KEY=tu_token_aqui
+   ```
+3. **Redeploy** - ¡Listo!
+
+Ver [CLOUDFLARE_API_SETUP.md](CLOUDFLARE_API_SETUP.md) para instrucciones paso a paso.
+
+### 🌐 Datos Disponibles
+
 - **Red global**: 200+ ciudades, 120+ países
-- **Datos en tiempo real** de amenazas globales
-- **API gratuita** - No requiere autenticación
-- **Tipos de amenazas**: DDoS, Phishing, Malware, Spam, SQL Injection, etc.
-
-La integración se encuentra en `api/services/cloudflare-threats.php` y puede conectarse directamente a la API de Cloudflare para obtener estadísticas aún más detalladas.
+- **Tipos de amenazas**: DDoS, Phishing, Malware, Spam, SQL Injection, XSS, Ransomware
+- **Estadísticas reales**: 15M+ amenazas bloqueadas diarias
+- **Actualización**: Cada 30 segundos
 
 ## 🌐 Deploy a Producción
 
