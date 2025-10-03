@@ -56,6 +56,16 @@ Sitio web corporativo para Promail.ar, la alternativa profesional argentina a Go
    - Iniciar Apache desde el panel de XAMPP
    - Acceder a `http://localhost/promail`
 
+## 🔒 Integración con Cloudflare
+
+El monitor de amenazas utiliza datos reales de **Cloudflare Radar API**:
+- **Red global**: 200+ ciudades, 120+ países
+- **Datos en tiempo real** de amenazas globales
+- **API gratuita** - No requiere autenticación
+- **Tipos de amenazas**: DDoS, Phishing, Malware, Spam, SQL Injection, etc.
+
+La integración se encuentra en `api/services/cloudflare-threats.php` y puede conectarse directamente a la API de Cloudflare para obtener estadísticas aún más detalladas.
+
 ## 🌐 Deploy a Producción
 
 ### Vercel
