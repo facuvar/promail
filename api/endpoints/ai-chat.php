@@ -6,8 +6,12 @@
  * Conecta con un agente especializado de OpenAI Assistant
  */
 
-header('Content-Type: application/json');
+// Desactivar display de errores para no romper el JSON
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../config/cors.php';
+header('Content-Type: application/json');
 
 // Solo aceptar POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

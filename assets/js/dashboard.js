@@ -691,15 +691,31 @@ function initAIChat() {
                 body: JSON.stringify({ message })
             });
 
-            const data = await response.json();
+            // Intentar parsear como JSON
+            let data;
+            try {
+                data = await response.json();
+            } catch (parseError) {
+                hideTypingIndicator();
+                console.error('Error parsing JSON:', parseError);
+                console.error('Response status:', response.status);
+                
+                // Intentar obtener el texto para debug
+                const text = await response.text();
+                console.error('Response text:', text.substring(0, 500));
+                
+                addAssistantMessage('Lo siento, hubo un error de configuración en el servidor. Por favor, verifica que las variables de entorno estén configuradas correctamente.');
+                return;
+            }
 
             hideTypingIndicator();
 
             if (data.success && data.response) {
                 addAssistantMessage(data.response);
             } else {
-                addAssistantMessage('Lo siento, hubo un error al procesar tu consulta. Por favor, intenta nuevamente.');
-                console.error('Error from API:', data.error || data.message);
+                const errorMsg = data.error || data.message || 'Error desconocido';
+                addAssistantMessage('Lo siento, hubo un error: ' + errorMsg);
+                console.error('Error from API:', data);
             }
         } catch (error) {
             hideTypingIndicator();
