@@ -132,9 +132,26 @@ try {
     ]);
 
     $runResponse = curl_exec($ch);
+    $curlError = curl_error($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
+    if ($curlError) {
+        throw new Exception('Error al ejecutar el asistente: ' . $curlError);
+    }
+
+    if ($httpCode !== 200) {
+        $errorData = json_decode($runResponse, true);
+        $errorMessage = $errorData['error']['message'] ?? 'Error al ejecutar run';
+        throw new Exception('Error OpenAI al ejecutar run (' . $httpCode . '): ' . $errorMessage);
+    }
+
     $run = json_decode($runResponse, true);
+    
+    if (!$run || !isset($run['id'])) {
+        throw new Exception('Respuesta inválida al ejecutar el asistente. Response: ' . substr($runResponse, 0, 200));
+    }
+    
     $runId = $run['id'];
 
     // Paso 4: Esperar a que el run se complete (polling)
@@ -156,14 +173,38 @@ try {
         ]);
 
         $statusResponse = curl_exec($ch);
+        $curlError = curl_error($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
-        $runStatus = json_decode($statusResponse, true)['status'];
+        if ($curlError) {
+            throw new Exception('Error al verificar estado del run: ' . $curlError);
+        }
+
+        if ($httpCode !== 200) {
+            $errorData = json_decode($statusResponse, true);
+            $errorMessage = $errorData['error']['message'] ?? 'Error al verificar estado';
+            throw new Exception('Error OpenAI al verificar run (' . $httpCode . '): ' . $errorMessage);
+        }
+
+        $statusData = json_decode($statusResponse, true);
+        if (!$statusData || !isset($statusData['status'])) {
+            throw new Exception('Respuesta inválida al verificar estado del run');
+        }
+
+        $runStatus = $statusData['status'];
+        
+        // Si hay error en el run, obtener detalles
+        if ($runStatus === 'failed') {
+            $errorMsg = $statusData['last_error']['message'] ?? 'Error desconocido';
+            throw new Exception('El run falló: ' . $errorMsg);
+        }
+        
         $attempts++;
     }
 
     if ($runStatus !== 'completed') {
-        throw new Exception('El asistente no pudo completar la respuesta (status: ' . $runStatus . ')');
+        throw new Exception('El asistente no pudo completar la respuesta (status: ' . $runStatus . ', intentos: ' . $attempts . ')');
     }
 
     // Paso 5: Obtener la respuesta del asistente
