@@ -683,7 +683,7 @@ function initAIChat() {
 
     async function sendToOpenAI(message) {
         try {
-            const response = await fetch('api/endpoints/ai-chat.php', {
+            const response = await fetch('/api/endpoints/ai-chat.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
