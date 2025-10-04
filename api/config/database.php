@@ -21,11 +21,22 @@ class Database {
         // Usar Neon en todos los ambientes (local y producción)
         // Las variables se cargan desde .env en local o desde Vercel en producción
         
-        $this->host = getenv('PGHOST') ?: 'ep-cool-rain-ad0kocck-pooler.c-2.us-east-1.aws.neon.tech';
-        $this->db_name = getenv('PGDATABASE') ?: 'neondb';
-        $this->username = getenv('PGUSER') ?: 'neondb_owner';
-        $this->password = getenv('PGPASSWORD') ?: 'npg_AkRIVhH48jbT';
-        $this->port = getenv('PGPORT') ?: '5432';
+        // En Vercel, las variables pueden estar en $_ENV o getenv()
+        $this->host = $_ENV['PGHOST'] ?? getenv('PGHOST');
+        $this->db_name = $_ENV['PGDATABASE'] ?? getenv('PGDATABASE');
+        $this->username = $_ENV['PGUSER'] ?? getenv('PGUSER');
+        $this->password = $_ENV['PGPASSWORD'] ?? getenv('PGPASSWORD');
+        $this->port = $_ENV['PGPORT'] ?? getenv('PGPORT') ?: '5432';
+        
+        // Validar que las variables estén configuradas
+        if (!$this->host || !$this->db_name || !$this->username || !$this->password) {
+            $this->lastError = 'Variables de entorno de base de datos no configuradas';
+            error_log('ERROR: Faltan variables de entorno de base de datos');
+            error_log('PGHOST: ' . ($this->host ? 'SET' : 'NOT SET'));
+            error_log('PGDATABASE: ' . ($this->db_name ? 'SET' : 'NOT SET'));
+            error_log('PGUSER: ' . ($this->username ? 'SET' : 'NOT SET'));
+            error_log('PGPASSWORD: ' . ($this->password ? 'SET' : 'NOT SET'));
+        }
     }
 
     public $lastError = null;

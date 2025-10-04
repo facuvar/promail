@@ -101,19 +101,37 @@ Ver [CLOUDFLARE_API_SETUP.md](CLOUDFLARE_API_SETUP.md) para instrucciones paso a
    vercel
    ```
 
-3. Configurar variables de entorno en Vercel:
-   - `PGHOST`: Host de Neon
-   - `PGDATABASE`: Nombre de la base de datos
-   - `PGUSER`: Usuario de Neon
-   - `PGPASSWORD`: Contraseña de Neon
-   - `PGPORT`: Puerto (5432)
+3. **IMPORTANTE:** Configurar variables de entorno en Vercel:
+   
+   Ve a tu proyecto en Vercel → **Settings** → **Environment Variables** y agrega:
+   
+   | Variable | Valor | Ambiente |
+   |----------|-------|----------|
+   | `PGHOST` | Tu host de Neon | Production, Preview, Development |
+   | `PGDATABASE` | Nombre de la base de datos | Production, Preview, Development |
+   | `PGUSER` | Usuario de Neon | Production, Preview, Development |
+   | `PGPASSWORD` | Contraseña de Neon | Production, Preview, Development |
+   | `PGPORT` | `5432` | Production, Preview, Development |
+
+4. **Re-desplegar** después de agregar las variables:
+   ```bash
+   git push origin main
+   ```
+   O desde el dashboard de Vercel: **Deployments** → **Redeploy**
+
+5. **Verificar configuración** con el script de diagnóstico:
+   ```
+   https://tu-proyecto.vercel.app/api/endpoints/test-connection.php
+   ```
+
+⚠️ **Si tienes error "Error de conexión":** Ver [SOLUCION_ERROR_VERCEL.md](./SOLUCION_ERROR_VERCEL.md)
 
 ### Neon Database
 
 1. Crear cuenta en [Neon](https://neon.tech)
 2. Crear nuevo proyecto
 3. Ejecutar el schema desde `database/schema.sql`
-4. Copiar credenciales a Vercel
+4. Copiar credenciales a Vercel (ver paso 3 arriba)
 
 ## 📁 Estructura del Proyecto
 
