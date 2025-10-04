@@ -212,7 +212,7 @@ El dashboard incluye un **chat inteligente** powered by OpenAI que ayuda con:
 2. **Agrega las variables en Vercel**:
    ```bash
    OPENAI_API_KEY=sk-proj-tu-api-key-aqui
-   OPENAI_ASSISTANT_ID=asst_Yq5ytkQHGwWiiBhuNVHX21Es
+   OPENAI_ASSISTANT_ID=asst_IX5D8NBG2DQEipJIjOztv3Cy
    ```
 3. **Redeploy** - ¡Listo!
 

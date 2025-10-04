@@ -46,7 +46,7 @@ sk-proj-AbCdEfGh123456789...
 El proyecto ya viene configurado con un asistente especializado de Promail.ar:
 
 ```
-asst_Yq5ytkQHGwWiiBhuNVHX21Es
+asst_IX5D8NBG2DQEipJIjOztv3Cy
 ```
 
 Este asistente ya está entrenado con toda la información sobre configuración de email, apps compatibles, migración, etc. **No necesitas crear un nuevo asistente**, solo usar este ID.
@@ -67,7 +67,7 @@ Edita `.env` y agrega tu API Key y el Assistant ID:
 ```env
 # OpenAI API
 OPENAI_API_KEY=sk-proj-tu-api-key-aqui
-OPENAI_ASSISTANT_ID=asst_Yq5ytkQHGwWiiBhuNVHX21Es
+OPENAI_ASSISTANT_ID=asst_IX5D8NBG2DQEipJIjOztv3Cy
 ```
 
 ### 2. Reiniciar el servidor local
@@ -97,7 +97,7 @@ Si estás usando XAMPP, no necesitas reiniciar nada. Los cambios se aplicarán a
    
    **Variable 2:**
    - **Name:** `OPENAI_ASSISTANT_ID`
-   - **Value:** `asst_Yq5ytkQHGwWiiBhuNVHX21Es`
+   - **Value:** `asst_IX5D8NBG2DQEipJIjOztv3Cy`
    - **Environments:** Marca las 3 opciones (Production, Preview, Development)
 
 5. Haz clic en **Save** para cada una
