@@ -2,10 +2,17 @@
 
 ## Situación
 
-Ya configuraste las variables de entorno en Vercel (`PGHOST`, `PGDATABASE`, `PGUSER`, `PGPASSWORD`, `PGPORT`) pero **aún recibes el error**:
+Ya configuraste las variables de entorno en Vercel (`PGHOST`, `PGDATABASE`, `PGUSER`, `PGPASSWORD`, `PGPORT`) pero **aún recibes errores** como:
 
 ```
 Error de conexión. Por favor, intenta nuevamente.
+```
+
+O errores de PHP como:
+
+```
+Warning: require_once(../config/cors.php): Failed to open stream: No such file or directory
+Fatal error: Failed opening required '../config/cors.php'
 ```
 
 ## ✅ Solución Paso a Paso
@@ -240,7 +247,27 @@ Si ves un error 404 o 500, hay un problema con la configuración de PHP en Verce
 
 **Solución:** Ve a Neon Dashboard y verifica tus credenciales
 
-### Problema 5: Runtime de PHP No Configurado
+### Problema 5: Rutas Relativas en require_once/include_once
+
+**Síntoma:** Error "Failed to open stream: No such file or directory"
+
+**Causa:** Las rutas relativas (`../config/cors.php`) no funcionan en Vercel
+
+**Solución:** Usar rutas absolutas con `__DIR__`:
+
+❌ **Incorrecto:**
+```php
+require_once '../config/cors.php';
+```
+
+✅ **Correcto:**
+```php
+require_once __DIR__ . '/../config/cors.php';
+```
+
+**Este problema ya está corregido en los archivos actualizados.**
+
+### Problema 6: Runtime de PHP No Configurado
 
 **Síntoma:** Error 404 en todos los endpoints PHP
 

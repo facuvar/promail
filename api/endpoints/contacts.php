@@ -5,9 +5,9 @@
  * POST /api/endpoints/contacts.php - Crear nuevo contacto
  */
 
-include_once '../config/cors.php';
-include_once '../config/database.php';
-include_once '../models/Contact.php';
+include_once __DIR__ . '/../config/cors.php';
+include_once __DIR__ . '/../config/database.php';
+include_once __DIR__ . '/../models/Contact.php';
 
 $database = new Database();
 $db = $database->getConnection();

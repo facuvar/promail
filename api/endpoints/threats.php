@@ -7,8 +7,8 @@
  * Muestra datos reales de amenazas globales
  */
 
-include_once '../config/cors.php';
-include_once '../services/cloudflare-threats.php';
+include_once __DIR__ . '/../config/cors.php';
+include_once __DIR__ . '/../services/cloudflare-threats.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 

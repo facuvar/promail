@@ -5,8 +5,8 @@
  */
 
 header('Content-Type: application/json');
-require_once '../config/cors.php';
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/cors.php';
+require_once __DIR__ . '/../config/database.php';
 
 // Array para almacenar resultados del diagnóstico
 $diagnostics = [

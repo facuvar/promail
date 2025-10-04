@@ -6,7 +6,7 @@
  * Este endpoint será conectado posteriormente con la API de IA
  */
 
-include_once '../config/cors.php';
+include_once __DIR__ . '/../config/cors.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 

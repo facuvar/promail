@@ -7,7 +7,8 @@
 **Causas posibles:**
 1. Las variables de entorno NO están configuradas en Vercel
 2. Las variables ESTÁN configuradas pero no se están leyendo correctamente en PHP
-3. Necesitas re-desplegar después de configurar las variables
+3. Las rutas relativas de `require_once` no funcionan en Vercel (necesitan `__DIR__`)
+4. Necesitas re-desplegar después de configurar las variables
 
 ## ✅ Solución en 3 Pasos
 
@@ -136,7 +137,17 @@ Significa que las variables NO están configuradas correctamente en Vercel.
 - ✅ Soporte para `$_ENV` y `getenv()` (Vercel usa ambos)
 - ✅ Mejorado logging para debugging
 
-### 3. Nuevo Script de Diagnóstico
+### 3. Todos los archivos en `api/endpoints/`
+- ✅ Cambiadas rutas relativas a rutas absolutas usando `__DIR__`
+- ✅ Ahora funcionan correctamente en el ambiente serverless de Vercel
+- Archivos actualizados:
+  - `login.php`
+  - `test-connection.php`
+  - `contacts.php`
+  - `chat.php`
+  - `threats.php`
+
+### 4. Nuevo Script de Diagnóstico
 - `api/endpoints/test-connection.php`
 - Verifica variables de entorno con `$_ENV` y `getenv()`
 - Muestra la fuente de cada variable
