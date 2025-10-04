@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body class="dashboard-body">
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
     <!-- Sidebar -->
-    <aside class="dashboard-sidebar">
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
         <div class="sidebar-header">
             <img src="assets/images/logo_pm.jpg" alt="Promail.ar" class="sidebar-logo">
             <h3>ProMail Admin</h3>
@@ -79,9 +82,14 @@
     <main class="dashboard-main">
         <!-- Header -->
         <header class="dashboard-header">
-            <div>
-                <h1 id="pageTitle">Resumen</h1>
-                <p id="pageSubtitle">Bienvenido a tu panel de administración</p>
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span class="hamburger"></span>
+                </button>
+                <div>
+                    <h1 id="pageTitle">Resumen</h1>
+                    <p id="pageSubtitle">Bienvenido a tu panel de administración</p>
+                </div>
             </div>
             <div class="header-user">
                 <div class="user-info">
