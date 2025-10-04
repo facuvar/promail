@@ -18,50 +18,53 @@
                     <img src="assets/images/logo_pm.jpg" alt="Promail.ar Logo">
                 </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html#ventajas">Ventajas</a></li>
-                <li><a href="index.html#seguridad">Seguridad</a></li>
-                <li><a href="index.html#precios">Precios</a></li>
-                <li><a href="index.html#comparativa">Comparativa</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#ventajas" class="nav-link">Ventajas</a></li>
+                <li><a href="index.html#seguridad" class="nav-link">Seguridad</a></li>
+                <li><a href="index.html#precios" class="nav-link">Precios</a></li>
+                <li><a href="index.html#comparativa" class="nav-link">Comparativa</a></li>
+                <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Sentiment Radar -->
-    <section class="hero" style="margin-top: 80px;">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+    <section class="hero" id="inicio">
+        <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Sentiment <span class="highlight">Radar</span></h1>
-                <p class="hero-subtitle" style="font-size: 1.5rem; margin-bottom: 1rem;">Radar de Sentimiento Organizacional</p>
+                <p class="hero-subtitle">Radar de Sentimiento Organizacional</p>
                 <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">
                     Una herramienta única que ni Google ni Microsoft ofrecen. Analiza el tono emocional de tu organización sin comprometer la privacidad.
                 </p>
-                <div style="display: flex; gap: 1rem;">
+                <div class="hero-cta">
                     <a href="#funcionalidades" class="btn btn-primary">Ver Funcionalidades</a>
                     <a href="index.html#contacto" class="btn btn-secondary">Solicitar Demo</a>
                 </div>
             </div>
-            <div>
-                <div class="sentiment-dashboard-preview" style="max-width: 500px; margin: 0 auto;">
+            <div class="hero-visual">
+                <div class="sentiment-dashboard-preview">
                     <div class="preview-header">
                         <h4>Dashboard en Vivo</h4>
                         <span class="preview-badge">Análisis en Tiempo Real</span>
                     </div>
                     
                     <!-- Métricas Generales -->
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
-                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">65%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-light);">Positivo</div>
+                    <div class="sentiment-summary-grid">
+                        <div class="sentiment-summary-card sentiment-positive">
+                            <div class="sentiment-summary-value">65%</div>
+                            <div class="sentiment-summary-label">Positivo</div>
                         </div>
-                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">25%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-light);">Neutral</div>
+                        <div class="sentiment-summary-card sentiment-neutral">
+                            <div class="sentiment-summary-value">25%</div>
+                            <div class="sentiment-summary-label">Neutral</div>
                         </div>
-                        <div style="text-align: center; padding: 0.75rem; background: var(--light-color); border-radius: 8px;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">10%</div>
-                            <div style="font-size: 0.75rem; color: var(--text-light);">Negativo</div>
+                        <div class="sentiment-summary-card sentiment-negative">
+                            <div class="sentiment-summary-value">10%</div>
+                            <div class="sentiment-summary-label">Negativo</div>
                         </div>
                     </div>
 
@@ -234,15 +237,15 @@
     </section>
 
     <!-- CTA Final -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: var(--white); text-align: center;">
+    <section class="cta-section">
         <div class="container">
-            <h2 style="color: var(--white); margin-bottom: 1rem;">¿Listo para entender mejor tu organización?</h2>
-            <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9;">
+            <h2 class="cta-title">¿Listo para entender mejor tu organización?</h2>
+            <p class="cta-subtitle">
                 Sentiment Radar está incluido en nuestros planes Business y Enterprise
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="index.html#precios" class="btn" style="background: var(--white); color: var(--primary-color);">Ver Planes</a>
-                <a href="index.html#contacto" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">Solicitar Demo</a>
+            <div class="hero-cta" style="justify-content: center;">
+                <a href="index.html#precios" class="btn cta-btn-white">Ver Planes</a>
+                <a href="index.html#contacto" class="btn btn-outline cta-btn-outline">Solicitar Demo</a>
             </div>
         </div>
     </section>
@@ -286,5 +289,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

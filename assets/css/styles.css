@@ -1562,6 +1562,25 @@ section {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
+    /* Sentiment Summary (sentiment-radar) */
+    .sentiment-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .sentiment-summary-value {
+        font-size: 2rem;
+    }
+
+    /* CTA Section */
+    .cta-title {
+        font-size: 1.75rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1rem;
+    }
 }
 
 /* Media query adicional para pantallas muy pequeñas */
@@ -1601,6 +1620,105 @@ section {
     .tabla-comparativa td {
         padding: 10px 12px;
     }
+
+    /* Sentiment Summary (sentiment-radar) */
+    .sentiment-summary-value {
+        font-size: 1.75rem;
+    }
+
+    .sentiment-summary-label {
+        font-size: 0.6875rem;
+    }
+
+    /* CTA Section */
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .cta-section {
+        padding: 3rem 0;
+    }
+}
+
+/* Sentiment Summary Grid (para sentiment-radar.html) */
+.sentiment-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.sentiment-summary-card {
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--light-color);
+    border-radius: 8px;
+}
+
+.sentiment-summary-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.sentiment-summary-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.sentiment-positive .sentiment-summary-value {
+    color: #10b981;
+}
+
+.sentiment-neutral .sentiment-summary-value {
+    color: #f59e0b;
+}
+
+.sentiment-negative .sentiment-summary-value {
+    color: #ef4444;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-title {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.cta-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-btn-white {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.cta-btn-white:hover {
+    background: var(--light-color);
+}
+
+.cta-btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.cta-btn-outline:hover {
+    background: var(--white);
+    color: var(--primary-color);
 }
 
 /* Media query para tablets */
@@ -1626,5 +1744,9 @@ section {
         max-width: 400px;
         margin: 0 auto;
         width: 100%;
+    }
+
+    .sentiment-summary-grid {
+        gap: 0.5rem;
     }
 }
