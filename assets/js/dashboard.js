@@ -134,6 +134,12 @@ function loadView(view) {
             pageSubtitle.textContent = 'Gestión de casillas de correo';
             content.innerHTML = getUsersView();
             break;
+        case 'ai-support':
+            pageTitle.textContent = 'Soporte IA';
+            pageSubtitle.textContent = 'Asistente virtual especializado en Promail.ar';
+            content.innerHTML = getAISupportView();
+            initAIChat();
+            break;
         case 'settings':
             pageTitle.textContent = 'Configuración';
             pageSubtitle.textContent = 'Ajustes del dominio y cuenta';
@@ -454,5 +460,290 @@ function getSettingsView() {
             <p style="color: var(--text-light); text-align: center; padding: 3rem;">Vista de configuración en desarrollo...</p>
         </div>
     `;
+}
+
+// Vista de Soporte IA
+function getAISupportView() {
+    return `
+        <div class="ai-info-box">
+            <p><strong>Asistente IA de Promail.ar</strong> - Este chat está conectado con un agente especializado de OpenAI que puede ayudarte con configuraciones, aplicaciones compatibles, y consultas sobre tu webmail.</p>
+        </div>
+
+        <div class="ai-chat-container">
+            <div class="ai-chat-header">
+                <div class="ai-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none">
+                        <path d="M8 13.5C8 13.5 8.9 15 12 15C15.1 15 16 13.5 16 13.5M15 9H15.01M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.9999 7.65802V4.00005C18.9999 3.07979 18.9999 2.61966 18.7808 2.27607C18.6341 2.04023 18.4191 1.8559 18.1654 1.74613C17.7815 1.57826 17.2831 1.67374 16.2861 1.86472C14.1779 2.2743 12.0014 2.49995 9.7777 2.49995C8.48374 2.49995 7.20803 2.42302 5.95335 2.27426C5.12766 2.18053 4.71481 2.13367 4.43449 2.3117C4.32352 2.38534 4.2265 2.47869 4.14823 2.58694C3.96784 2.86044 3.96786 3.27104 3.9679 4.09223L3.9681 12.5689C3.9681 13.8948 3.96811 14.5577 4.22988 15.0732C4.4589 15.5235 4.83103 15.8845 5.28827 16.0996C5.81069 16.3481 6.47546 16.3322 7.80499 16.3004C9.15663 16.2682 10.4708 16.0995 11.7362 15.8097C13.4202 15.4181 14.2621 15.2224 14.9018 15.5625C15.1478 15.6904 15.3694 15.8582 15.5576 16.0585C16.0001 16.5375 16.0001 17.2493 16 18.673L16 18.6735C16 20.1271 16 20.8539 16.4282 21.2552C16.5935 21.4082 16.7869 21.5287 16.9984 21.6106C17.5274 21.8213 18.1701 21.6382 19.4555 21.2722L19.4738 21.2672C20.4544 21.0012 20.9447 20.8682 21.2861 20.5661C21.4939 20.387 21.6596 20.1636 21.7713 19.9124C21.9999 19.4091 21.9999 18.8133 21.9999 17.6217V17.6214V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Asistente Promail IA</h3>
+                    <p>Estoy aquí para ayudarte con cualquier consulta</p>
+                </div>
+            </div>
+
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-welcome-message">
+                    <div class="ai-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 14C8.91212 15.2144 10.3643 16 12 16C13.6357 16 15.0879 15.2144 16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.00897 9L8 9M16 9L15.991 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>¡Hola! Soy tu asistente virtual</h4>
+                    <p>Puedo ayudarte con configuraciones de email, aplicaciones compatibles, migración desde otros servicios, y mucho más. ¿En qué puedo asistirte hoy?</p>
+                </div>
+
+                <div class="ai-message assistant" style="display: none;">
+                    <div class="ai-message-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                            <path d="M8 13.5C8 13.5 8.9 15 12 15C15.1 15 16 13.5 16 13.5M15 9H15.01M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.9999 7.65802V4.00005C18.9999 3.07979 18.9999 2.61966 18.7808 2.27607C18.6341 2.04023 18.4191 1.8559 18.1654 1.74613C17.7815 1.57826 17.2831 1.67374 16.2861 1.86472C14.1779 2.2743 12.0014 2.49995 9.7777 2.49995C8.48374 2.49995 7.20803 2.42302 5.95335 2.27426C5.12766 2.18053 4.71481 2.13367 4.43449 2.3117C4.32352 2.38534 4.2265 2.47869 4.14823 2.58694C3.96784 2.86044 3.96786 3.27104 3.9679 4.09223L3.9681 12.5689C3.9681 13.8948 3.96811 14.5577 4.22988 15.0732C4.4589 15.5235 4.83103 15.8845 5.28827 16.0996C5.81069 16.3481 6.47546 16.3322 7.80499 16.3004C9.15663 16.2682 10.4708 16.0995 11.7362 15.8097C13.4202 15.4181 14.2621 15.2224 14.9018 15.5625C15.1478 15.6904 15.3694 15.8582 15.5576 16.0585C16.0001 16.5375 16.0001 17.2493 16 18.673L16 18.6735C16 20.1271 16 20.8539 16.4282 21.2552C16.5935 21.4082 16.7869 21.5287 16.9984 21.6106C17.5274 21.8213 18.1701 21.6382 19.4555 21.2722L19.4738 21.2672C20.4544 21.0012 20.9447 20.8682 21.2861 20.5661C21.4939 20.387 21.6596 20.1636 21.7713 19.9124C21.9999 19.4091 21.9999 18.8133 21.9999 17.6217V17.6214V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="ai-message-content">
+                        <div class="ai-typing-indicator" id="aiTypingIndicator">
+                            <div class="ai-typing-dot"></div>
+                            <div class="ai-typing-dot"></div>
+                            <div class="ai-typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-chat-input-container">
+                <div class="ai-chat-input-wrapper">
+                    <textarea 
+                        id="aiChatInput" 
+                        class="ai-chat-input" 
+                        placeholder="Escribe tu consulta aquí..." 
+                        rows="1"
+                    ></textarea>
+                    <button id="aiSendButton" class="ai-send-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+                            <path d="M20.3355 7.79109C21.8557 7.14887 21.8557 4.85113 20.3355 4.20891L4.20891 -3.48816e-07C2.85662 -0.576069 1.57607 0.704481 2.14845 2.05677L5.40071 9.48071C5.58045 9.91729 5.58045 10.4077 5.40071 10.8443L2.14845 18.2682C1.57607 19.6205 2.85662 20.9011 4.20891 20.325L20.3355 16.1161C21.8557 15.4739 21.8557 13.1761 20.3355 12.5339L8.27486 7.54944" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="ai-suggestions" id="aiSuggestions">
+                    <div class="ai-suggestion-chip">¿Cómo configuro mi email en Outlook?</div>
+                    <div class="ai-suggestion-chip">¿Qué apps móviles son compatibles?</div>
+                    <div class="ai-suggestion-chip">¿Cómo migro desde Gmail?</div>
+                    <div class="ai-suggestion-chip">¿Cuál es el límite de almacenamiento?</div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Inicializar Chat IA
+function initAIChat() {
+    const chatInput = document.getElementById('aiChatInput');
+    const sendButton = document.getElementById('aiSendButton');
+    const chatMessages = document.getElementById('aiChatMessages');
+    const suggestions = document.querySelectorAll('.ai-suggestion-chip');
+
+    if (!chatInput || !sendButton) return;
+
+    // Auto-resize textarea
+    chatInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    // Enviar con Enter (Shift+Enter para nueva línea)
+    chatInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // Enviar con botón
+    sendButton.addEventListener('click', sendMessage);
+
+    // Sugerencias
+    suggestions.forEach(chip => {
+        chip.addEventListener('click', function() {
+            chatInput.value = this.textContent;
+            chatInput.focus();
+            sendMessage();
+        });
+    });
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // Limpiar input
+        chatInput.value = '';
+        chatInput.style.height = 'auto';
+
+        // Ocultar mensaje de bienvenida si existe
+        const welcomeMessage = chatMessages.querySelector('.ai-welcome-message');
+        if (welcomeMessage) {
+            welcomeMessage.remove();
+        }
+
+        // Ocultar sugerencias después del primer mensaje
+        const suggestionsContainer = document.getElementById('aiSuggestions');
+        if (suggestionsContainer && suggestionsContainer.style.display !== 'none') {
+            suggestionsContainer.style.display = 'none';
+        }
+
+        // Agregar mensaje del usuario
+        addUserMessage(message);
+
+        // Mostrar indicador de "escribiendo..."
+        showTypingIndicator();
+
+        // Enviar a la API
+        sendToOpenAI(message);
+    }
+
+    function addUserMessage(text) {
+        const messageHtml = `
+            <div class="ai-message user">
+                <div class="ai-message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                        <path d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.4816Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.5 6.5C16.5 8.98528 14.4853 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.01472 16.5 6.5Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="ai-message-content">
+                    <div class="ai-message-bubble">${escapeHtml(text)}</div>
+                    <div class="ai-message-time">${getCurrentTime()}</div>
+                </div>
+            </div>
+        `;
+        
+        // Insertar antes del indicador de typing
+        const typingMessage = chatMessages.querySelector('.ai-message.assistant[style*="display: none"]');
+        if (typingMessage) {
+            typingMessage.insertAdjacentHTML('beforebegin', messageHtml);
+        } else {
+            chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+        }
+        
+        scrollToBottom();
+    }
+
+    function addAssistantMessage(text) {
+        const messageHtml = `
+            <div class="ai-message assistant">
+                <div class="ai-message-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+                        <path d="M8 13.5C8 13.5 8.9 15 12 15C15.1 15 16 13.5 16 13.5M15 9H15.01M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.9999 7.65802V4.00005C18.9999 3.07979 18.9999 2.61966 18.7808 2.27607C18.6341 2.04023 18.4191 1.8559 18.1654 1.74613C17.7815 1.57826 17.2831 1.67374 16.2861 1.86472C14.1779 2.2743 12.0014 2.49995 9.7777 2.49995C8.48374 2.49995 7.20803 2.42302 5.95335 2.27426C5.12766 2.18053 4.71481 2.13367 4.43449 2.3117C4.32352 2.38534 4.2265 2.47869 4.14823 2.58694C3.96784 2.86044 3.96786 3.27104 3.9679 4.09223L3.9681 12.5689C3.9681 13.8948 3.96811 14.5577 4.22988 15.0732C4.4589 15.5235 4.83103 15.8845 5.28827 16.0996C5.81069 16.3481 6.47546 16.3322 7.80499 16.3004C9.15663 16.2682 10.4708 16.0995 11.7362 15.8097C13.4202 15.4181 14.2621 15.2224 14.9018 15.5625C15.1478 15.6904 15.3694 15.8582 15.5576 16.0585C16.0001 16.5375 16.0001 17.2493 16 18.673L16 18.6735C16 20.1271 16 20.8539 16.4282 21.2552C16.5935 21.4082 16.7869 21.5287 16.9984 21.6106C17.5274 21.8213 18.1701 21.6382 19.4555 21.2722L19.4738 21.2672C20.4544 21.0012 20.9447 20.8682 21.2861 20.5661C21.4939 20.387 21.6596 20.1636 21.7713 19.9124C21.9999 19.4091 21.9999 18.8133 21.9999 17.6217V17.6214V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="ai-message-content">
+                    <div class="ai-message-bubble">${formatMessage(text)}</div>
+                    <div class="ai-message-time">${getCurrentTime()}</div>
+                </div>
+            </div>
+        `;
+        
+        // Insertar antes del indicador de typing
+        const typingMessage = chatMessages.querySelector('.ai-message.assistant[style*="display: none"]');
+        if (typingMessage) {
+            typingMessage.insertAdjacentHTML('beforebegin', messageHtml);
+        } else {
+            chatMessages.insertAdjacentHTML('beforeend', messageHtml);
+        }
+        
+        scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.getElementById('aiTypingIndicator');
+        const typingMessage = typingIndicator.closest('.ai-message');
+        if (typingMessage) {
+            typingMessage.style.display = 'flex';
+        }
+        if (typingIndicator) {
+            typingIndicator.classList.add('active');
+        }
+        scrollToBottom();
+    }
+
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('aiTypingIndicator');
+        const typingMessage = typingIndicator.closest('.ai-message');
+        if (typingMessage) {
+            typingMessage.style.display = 'none';
+        }
+        if (typingIndicator) {
+            typingIndicator.classList.remove('active');
+        }
+    }
+
+    async function sendToOpenAI(message) {
+        try {
+            const response = await fetch('api/endpoints/ai-chat.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+
+            hideTypingIndicator();
+
+            if (data.success && data.response) {
+                addAssistantMessage(data.response);
+            } else {
+                addAssistantMessage('Lo siento, hubo un error al procesar tu consulta. Por favor, intenta nuevamente.');
+                console.error('Error from API:', data.error || data.message);
+            }
+        } catch (error) {
+            hideTypingIndicator();
+            addAssistantMessage('Lo siento, no pude conectarme con el servidor. Por favor, verifica tu conexión e intenta nuevamente.');
+            console.error('Error:', error);
+        }
+    }
+
+    function scrollToBottom() {
+        setTimeout(() => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 100);
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function formatMessage(text) {
+        // Convertir markdown básico a HTML
+        let formatted = escapeHtml(text);
+        
+        // Negrita
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        // Cursiva
+        formatted = formatted.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        
+        // Saltos de línea
+        formatted = formatted.replace(/\n/g, '<br>');
+        
+        // Listas
+        formatted = formatted.replace(/• (.*?)(<br>|$)/g, '• <span>$1</span>$2');
+        
+        return formatted;
+    }
 }
 

@@ -21,7 +21,10 @@ Sitio web corporativo para Promail.ar, la alternativa profesional argentina a Go
 - ✅ Sitio one-page moderno
 - ✅ Sección de precios con 3 planes
 - ✅ Monitor de amenazas en tiempo real
-- ✅ Chat asistente con IA (placeholder para API futura)
+- ✅ **Panel de administración completo**
+- ✅ **Chat de Soporte IA con OpenAI** - Asistente especializado en Promail.ar
+- ✅ Análisis de sentimiento organizacional
+- ✅ Gestión de correos y usuarios
 - ✅ Formulario de contacto
 - ✅ APIs REST para gestión de datos
 - ✅ Diseño responsive
@@ -193,12 +196,36 @@ promail/
 **GET** `/api/endpoints/threats.php`
 - Retorna estadísticas y amenazas recientes
 
+## 🤖 Chat de Soporte IA
+
+El dashboard incluye un **chat inteligente** powered by OpenAI que ayuda con:
+
+- ✅ Configuración de email en Outlook, Thunderbird, Apple Mail
+- ✅ Apps móviles compatibles (iOS/Android)
+- ✅ Migración desde Gmail, Office 365, etc.
+- ✅ Resolución de problemas comunes
+- ✅ Límites y características del servicio
+
+### Configuración
+
+1. **Obtén una API Key de OpenAI**: [Guía completa →](OPENAI_SETUP.md)
+2. **Agrega las variables en Vercel**:
+   ```bash
+   OPENAI_API_KEY=sk-proj-tu-api-key-aqui
+   OPENAI_ASSISTANT_ID=asst_Yq5ytkQHGwWiiBhuNVHX21Es
+   ```
+3. **Redeploy** - ¡Listo!
+
+**Costo estimado:** ~$0.005 por consulta (~$2-5/mes para uso moderado)
+
+Ver [OPENAI_SETUP.md](OPENAI_SETUP.md) para instrucciones detalladas.
+
 ## 🔮 Próximas Funcionalidades
 
-- [ ] Integración con API de IA para el chat
+- [x] Integración con API de IA para el chat
 - [ ] Conexión con APIs de seguridad reales (VirusTotal, PhishTank)
-- [ ] Panel de administración
-- [ ] Sistema de autenticación
+- [x] Panel de administración
+- [x] Sistema de autenticación
 - [ ] Procesamiento de pagos
 - [ ] Dashboard de clientes
 
